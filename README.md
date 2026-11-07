@@ -52,9 +52,15 @@ Beyond writing HTML, CSS and JavaScript, the agent drove real tools: `fontTools`
 
 Publishing a client project publicly needs care. Before this repo went live, the agent separated private notes (pricing, client conversation, internal process, licensed font files) from the public code, moved them behind `.gitignore`, started a clean history so the old commits with those notes were never pushed, and scanned the staged files for prices, payment terms and credentials before the first push. Anything outward facing, such as creating the public repo or force pushing, waited for my explicit go-ahead.
 
-### What stayed with me
+### My role
 
-Every product and design decision: the visual direction, the fonts (tried two alternatives and went back to the original), the copy rules (Romanian text, English headlines), what the client gets to edit, and when something is good enough to ship. The agent was fast at exploring and building; my job was to keep it pointed at the right problem and to say no.
+I worked across three roles on this project, with the agent as the hands on the keyboard for most of the code.
+
+- **Business analysis.** I turned what the client needed into concrete decisions: the choice of Cal.com over alternatives, how 3 tables of 2 seats map to 3 seats per slot, the 1 hour booking notice, how to stop one person from blocking every table, who owns which account, and what the client can change on her own. I answered her questions in writing and kept the scope, the open questions and the risks (domain expiry, font licensing, paper testing of the QR) in a written context file.
+- **UI/UX design.** I set the direction and reviewed every iteration: the "steeping water" concept, the fonts, the lighter tea colour for visibility, the one-open-at-a-time FAQ, a smoother hero to content transition, a shorter footer, the photo layout, grouping the hero text with its button, the numbered steps with the rinse marked as preparation, and a mobile first booking flow, since every visitor arrives from a phone.
+- **Code.** I reviewed and steered the implementation with clean structure in mind. Each feature (the fluid simulation, the steps, the FAQ, the booking pill, the tagline reveal, the calendar embed) is a self-contained module with its own private state, one responsibility each, and no shared globals between them. The code is deliberately plain JavaScript without classes or a framework: for one static page, encapsulation and single responsibility mattered more than class hierarchies.
+
+The agent was fast at exploring and building; my job was to keep it pointed at the right problem and to say no.
 
 ## Stack
 
