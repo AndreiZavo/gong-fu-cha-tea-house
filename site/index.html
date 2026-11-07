@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gong Fu Cha la Demmers Teehaus, Cluj-Napoca</title>
+  <meta name="description" content="Fă-ți timp pentru ceai. Rezervă o masă de Gong Fu Cha pentru una sau două persoane la Demmers Teehaus, Piața Unirii 9, Cluj-Napoca.">
+  <link rel="canonical" href="https://demmerscluj.ro/">
+  <meta name="theme-color" content="#F1F5F1">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://demmerscluj.ro/">
+  <meta property="og:title" content="Gong Fu Cha la Demmers Teehaus">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:description" content="Fă-ți timp pentru ceai. Rezervă următoarea ta experiență Gong Fu Cha.">
+  <!-- TODO: og:image cand avem pozele (1200x630) -->
+  <script>
+    // Pagina se deschide mereu de sus: la intrarea pe link, la refresh si cand URL-ul are #ancora.
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+    window.scrollTo(0, 0);
+    window.addEventListener("pageshow", () => window.scrollTo(0, 0));
+  </script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Jost = inlocuitor gratuit pentru Futura pe dispozitivele care nu o au (Android, Windows) -->
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/song-for-jennifer-bold.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    /* "A Song for Jennifer" (Brittney Murphy): licenta comerciala detinuta (confirmat 7 nov).
+       Fontul nu are "ț" corect: tot ce e scris cu el (titlurile) ramane in ENGLEZA. Restul textului e in romana. */
+    @font-face { font-family: "A Song for Jennifer"; src: url("assets/fonts/song-for-jennifer-regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: "A Song for Jennifer"; src: url("assets/fonts/song-for-jennifer-bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+    :root {
+      --font-head: "A Song for Jennifer", "Futura", "Jost", sans-serif;
+      --font-text: "Futura", "Futura PT", "Jost", system-ui, sans-serif;
+      --water: #F1F5F1;
+      --water-deep: #E3EBE2;
+      --surface: #F8FAF7;
+      --leaf: #24301C;
+      --leaf-soft: #4C5842;
+      --line: #D5DECF;
+      --liquor-1: #E4DDA6;
+      --liquor-2: #D9CF8C;
+      --liquor-3: #C9BC6A;
+      --liquor-4: #A9A453;
+      --liquor-5: #8F9A45;
+      --red: #9F393D;
+      --red-hover: #872F33;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html.lenis, html.lenis body { height: auto; }
+    html.lenis { scroll-behavior: auto; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scrollbar-color: var(--liquor-4) var(--water); }
+    body {
+      background: var(--water); color: var(--leaf);
+      font-family: var(--font-text);
+      font-synthesis: none;
+      font-size: 16px; line-height: 24px;
+      -webkit-font-smoothing: antialiased;
+      caret-color: var(--red);
+      -webkit-tap-highlight-color: transparent;
+    }
+    ::selection { background: var(--liquor-2); color: var(--leaf); }
+    a { color: inherit; text-underline-offset: 4px; text-decoration-color: var(--liquor-4); }
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    :focus-visible { outline: 2px solid var(--red); outline-offset: 4px; border-radius: 4px; }
+
+    /* Text styles */
+    .heading-1, .heading-3, .heading-6 { font-family: var(--font-head); font-style: normal; font-weight: 700; }
+    .heading-1 { font-size: 60px; line-height: 60px; letter-spacing: -0.01em; }
+    .heading-3 { font-size: 36px; line-height: 40px; }
+    .heading-6 { font-size: 20px; line-height: 28px; }
+    .title-3 { font-size: 16px; line-height: 24px; font-weight: 500; }
+    .title-4 { font-size: 14px; line-height: 20px; font-weight: 500; }
+    .body-3 { font-size: 16px; line-height: 24px; font-weight: 400; }
+    .body-6 { font-size: 14px; line-height: 20px; font-weight: 400; }
+    .button-md { font-size: 16px; line-height: 24px; font-weight: 600; }
+    .button-sm { font-size: 14px; line-height: 20px; font-weight: 500; letter-spacing: 0.01em; }
+    .caption-2 { font-size: 14px; line-height: 20px; font-weight: 400; }
+    .caption-4 { font-size: 12px; line-height: 16px; font-weight: 500; }
+    .soft { color: var(--leaf-soft); }
+
+    .skip { position: absolute; left: 16px; top: -64px; z-index: 20; padding: 8px 12px; background: var(--leaf); color: var(--water); border-radius: 8px; text-decoration: none; transition: transform 300ms var(--ease); }
+    .skip:focus { transform: translateY(80px); }
+
+    .wrap { max-width: 640px; margin: 0 auto; padding-inline: 24px; }
+    section { padding-block: 64px; }
+
+    /* Hero: the cup of water */
+    .hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; overflow: hidden; touch-action: pan-y; }
+    #water { position: absolute; inset: 0; width: 100%; height: 100%; display: block; filter: blur(4px); transform: scale(1.04);
+      -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%); mask-image: linear-gradient(to bottom, #000 55%, transparent 100%); }
+    .hero + .what { padding-top: 32px; }
+    .hero-in { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; width: 100%; max-width: 640px; margin: 0 auto; padding: 24px 24px 32px; pointer-events: none; }
+    .hero-in a, .hero-in button { pointer-events: auto; }
+    .top { display: flex; justify-content: space-between; gap: 16px; }
+    .top a { text-decoration: none; }
+    .hero-body { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-block: 32px 0; }
+    .hero h1 { max-width: 680px; }
+    .hero .lede { margin-top: 16px; max-width: 440px; }
+    .hero-copy .btn { margin-top: 24px; }
+    .hero-art { margin: 48px 0 0; display: flex; justify-content: center; pointer-events: none; }
+    .hero-art img { display: block; width: 100%; max-width: 400px; height: auto; opacity: 0.88; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 44px; max-width: 100%; padding: 12px 20px; white-space: nowrap;
+      background: var(--red); color: #FFFFFF; text-decoration: none; border: 0; cursor: pointer;
+      border-radius: 9999px;
+      transition: background-color 300ms var(--ease), transform 300ms var(--ease);
+    }
+    .btn:hover { background: var(--red-hover); transform: translateY(-1px); }
+    .btn:active { transform: scale(0.98); }
+    .btn svg { flex: none; width: 14px; height: 14px; transition: transform 300ms var(--ease); }
+    .btn:hover svg { transform: translateY(2px); }
+
+    /* Infusions */
+    .what p.body-3 + p.body-3 { margin-top: 12px; }
+    .what h2 { margin-bottom: 16px; }
+    /* Steps: cups on a thin thread. Each one comes forward as it reaches the reading line. */
+    .pours { --p: 0; position: relative; list-style: none; margin-top: 32px; display: grid; }
+    .pours::before, .pours::after { content: ""; position: absolute; left: 31.5px; top: 56px; bottom: 56px; width: 1px; transform-origin: top; }
+    .pours::before { background: var(--line); }
+    .pours::after { background: var(--liquor-4); transform: scaleY(var(--p)); transition: transform 800ms var(--ease); }
+    .pour { position: relative; z-index: 1; display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: start; padding-block: 24px; }
+    .cup { position: relative; width: 64px; height: 64px; border-radius: 9999px; background: var(--surface); box-shadow: inset 0 0 0 6px #FFFFFF, 0 0 0 1px var(--line); transform: scale(0.86); transition: transform 700ms var(--ease), box-shadow 700ms var(--ease); }
+    .cup i { position: absolute; inset: 10px; border-radius: 9999px; background: var(--c); transform: scale(0.3); opacity: 0; transition: transform 900ms var(--ease), opacity 900ms var(--ease); }
+    .step { display: flex; align-items: center; gap: 8px; margin-top: 6px; color: var(--leaf-soft); }
+    .num { font-variant-numeric: tabular-nums; letter-spacing: 0.08em; transition: color 700ms var(--ease); }
+    .tag { padding: 0 8px; border-radius: 9999px; box-shadow: inset 0 0 0 1px var(--line); background: var(--water); }
+    .pour h3 { margin-top: 4px; color: var(--leaf-soft); transition: color 700ms var(--ease); }
+    .pour p.body-6 { margin-top: 4px; }
+    .pour.on .cup { transform: scale(1); box-shadow: inset 0 0 0 6px #FFFFFF, 0 6px 16px -6px rgba(36, 48, 28, 0.25); }
+    .pour.on .cup i { transform: scale(1); opacity: 1; }
+    .pour.on h3 { color: var(--leaf); }
+    .pour.on .num { color: var(--red); }
+    /* The rinse is preparation, not a cup to drink: dashed rim, paler water */
+    .pour.rinse .cup, .pour.rinse.on .cup { background: var(--water); box-shadow: none; }
+    .pour.rinse .cup::before { content: ""; position: absolute; inset: 0; border-radius: 9999px; border: 1px dashed var(--liquor-5); }
+    .pour.rinse.on .cup i { opacity: 0.5; }
+
+    /* Very narrow phones: the button shrinks instead of wrapping */
+    @media (max-width: 359px) { .btn { padding: 10px 16px; font-size: 13px; gap: 6px; } }
+
+    /* Mobile booking pill */
+    .book-bar { position: fixed; z-index: 30; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom)); transform: translate(-50%, 24px); opacity: 0; pointer-events: none;
+      box-shadow: 0 8px 24px -12px rgba(36, 48, 28, 0.5); transition: opacity 400ms var(--ease), transform 500ms var(--ease), background-color 300ms var(--ease); }
+    .book-bar.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+    .book-bar.show:hover { transform: translate(-50%, -1px); }
+    .book-bar.show:active { transform: translate(-50%, 0) scale(0.98); }
+    @media (min-width: 1024px) { .book-bar { display: none; } }
+
+    /* Tagline */
+    .tagline { padding-block: 96px 40px; }
+    .tagline p { max-width: 680px; text-wrap: balance; }
+    .tagline .w { color: rgba(36, 48, 28, 0.28); transition: color 600ms var(--ease); }
+    .tagline .w.on { color: var(--leaf); }
+
+    /* Photos (temporary) */
+    .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .photo { aspect-ratio: 3 / 4; border-radius: 16px; background: var(--water-deep); display: flex; align-items: flex-end; padding: 16px; overflow: hidden; }
+    .photo:first-child { grid-column: span 2; aspect-ratio: 16 / 10; }
+    .photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Booking */
+    .book h2 { margin-bottom: 8px; }
+    .facts { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .facts span { padding: 4px 12px; border-radius: 9999px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+    #cal-box { position: relative; margin-top: 24px; background: #FFFFFF; border-radius: 24px; box-shadow: 0 16px 48px -24px rgba(36, 48, 28, 0.35), inset 0 0 0 1px var(--line); overflow: hidden; }
+    #cal-inline { width: 100%; min-height: 560px; overflow: auto; }
+    #cal-inline.done { min-height: 0; }
+    .skeleton { position: absolute; inset: 0; padding: 24px; display: grid; align-content: start; gap: 16px; pointer-events: none; transition: opacity 300ms var(--ease); }
+    .skeleton.hide { opacity: 0; }
+    .sk { background: var(--water-deep); border-radius: 8px; animation: pulse 1600ms var(--ease) infinite alternate; }
+    .sk-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+    .sk-days .sk { aspect-ratio: 1; }
+    @keyframes pulse { from { opacity: 1; } to { opacity: 0.5; } }
+    .cal-msg { padding: 48px 24px; text-align: center; }
+    .cal-msg .btn { margin-top: 24px; width: auto; }
+    .booked { padding: 64px 24px; text-align: center; }
+    .booked p { margin-top: 12px; }
+
+    /* FAQ */
+    .faq { display: grid; gap: 8px; margin-top: 24px; }
+    .faq details { background: var(--surface); border-radius: 16px; box-shadow: inset 0 0 0 1px var(--line); }
+    .faq summary { list-style: none; cursor: pointer; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; border-radius: 16px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary svg { flex: none; width: 20px; height: 20px; color: var(--red); transition: transform 300ms var(--ease); }
+    .faq details.is-open summary svg { transform: rotate(45deg); }
+    .faq-a { overflow: hidden; }
+    .faq-a p { padding: 0 24px 16px; }
+
+    footer { margin-top: 48px; background: var(--leaf); color: var(--water); border-radius: 32px 32px 0 0; overflow: hidden; }
+    footer .wrap { padding-block: 40px 24px; }
+    footer .soft { color: #B9C4AE; }
+    .ftop { display: grid; gap: 24px; }
+    .fhead { display: flex; align-items: center; gap: 16px; }
+    .fcups { display: flex; gap: 6px; flex: none; }
+    .fcup { width: 20px; height: 20px; border-radius: 9999px; background: #34432A; box-shadow: inset 0 0 0 2px #3E4F33; display: grid; place-items: center; }
+    .fcup i { width: 12px; height: 12px; border-radius: 9999px; background: var(--c); transform: scale(0.2); opacity: 0; transition: transform 900ms var(--ease), opacity 900ms var(--ease); }
+    footer.in .fcup i { transform: scale(1); opacity: 1; }
+    footer.in .fcup:nth-child(2) i { transition-delay: 120ms; } footer.in .fcup:nth-child(3) i { transition-delay: 240ms; }
+    footer.in .fcup:nth-child(4) i { transition-delay: 360ms; } footer.in .fcup:nth-child(5) i { transition-delay: 480ms; }
+    footer h2 { color: var(--water); }
+    footer .invite { margin-top: 8px; }
+    .finfo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; margin-top: 32px; padding-top: 24px; border-top: 1px solid #3E4F33; }
+    .finfo .where { grid-column: span 2; }
+    .finfo dt { margin-bottom: 2px; }
+    .finfo dd { display: grid; gap: 2px; }
+    .finfo a { text-decoration-color: var(--liquor-4); width: fit-content; }
+    .finfo dd.social { display: flex; gap: 12px; }
+    .social a { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 9999px; background: #34432A; color: var(--water); transition: background-color 300ms var(--ease), transform 300ms var(--ease); }
+    .social a:hover { background: #42543A; transform: translateY(-2px); }
+    .social svg { width: 20px; height: 20px; }
+    .fbottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; margin-top: 32px; }
+    .fbottom a { white-space: nowrap; }
+    @media (max-width: 719px) { .fbottom .copy { order: 3; width: 100%; } }
+    @media (min-width: 720px) {
+      .ftop { grid-template-columns: 1fr auto; align-items: end; }
+      .finfo { grid-template-columns: 2fr 1.4fr 1fr; }
+      .finfo .where { grid-column: auto; }
+    }
+    footer :focus-visible { outline-color: var(--liquor-2); }
+
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+    .no-js .reveal, .no-js .cup, .no-js .cup i, .no-js .fcup i { opacity: 1; transform: none; }
+    .no-js .pours { --p: 1; }
+    .no-js .pour h3 { color: var(--leaf); }
+
+    @media (min-width: 720px) {
+      .heading-1 { font-size: 72px; line-height: 72px; }
+      .heading-3 { font-size: 48px; line-height: 48px; }
+      .hero-art img { max-width: 520px; }
+      .photos { grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; aspect-ratio: 16 / 9; }
+      .photos .photo, .photos .photo:first-child { grid-column: auto; aspect-ratio: auto; min-height: 0; }
+      .photos .photo:first-child { grid-row: span 2; }
+      .faq { max-width: 720px; }
+    }
+    @media (min-width: 1024px) {
+      .wrap, .hero-in { max-width: 1120px; padding-inline: 48px; }
+      .heading-1 { font-size: 96px; line-height: 96px; }
+      .hero-body { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 64px; align-items: center; }
+      .hero h1 { white-space: nowrap; }
+      .hero-art { margin: 0; }
+      .hero-art img { max-width: 560px; }
+      .hero-in { padding-block: 32px 48px; }
+      .what { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+      .what .pours { margin-top: 0; }
+      .what .reveal { position: sticky; top: 64px; max-width: 480px; }
+      .tagline .heading-3 { font-size: 60px; line-height: 60px; }
+      .book { display: grid; grid-template-columns: 1fr 640px; gap: 64px; align-items: start; }
+      .book-head { position: sticky; top: 64px; }
+      #cal-box { margin-top: 0; }
+      section { padding-block: 96px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { transform: none; transition: opacity 300ms linear; }
+      .cup, .cup i, .fcup i, .pours::after { transition: none; }
+      .book-bar { transition: opacity 200ms linear; transform: translateX(-50%) !important; }
+      .tagline .w { color: var(--leaf); transition: none; }
+      .sk { animation: none; }
+    }
+  </style>
+</head>
+<body class="no-js">
+  <a class="skip button-md" href="#book">Sari la rezervare</a>
+
+  <main id="main">
+    <section class="hero" aria-label="Gong Fu Cha la Demmers Teehaus" style="padding-block: 0">
+      <canvas id="water" aria-hidden="true"></canvas>
+      <div class="hero-in">
+        <!-- TODO: logo: <img src="assets/logo.svg" alt="Demmers Teehaus" height="24"> -->
+        <div class="top title-4">
+          <a href="/">Demmers Teehaus</a>
+          <span class="soft">Piața Unirii 9, Cluj</span>
+        </div>
+        <div class="hero-body">
+          <div class="hero-copy">
+            <h1 class="heading-1">Make time for tea.</h1>
+            <p class="lede body-3 soft">Gong Fu Cha la Demmers Teehaus. Un ceai verde, infuzat iar și iar, la masa ta. Te așezi, lași graba deoparte și urmărești cum se schimbă ceaiul de la o ceașcă la alta. O pauză lentă, chiar în Piața Unirii.</p>
+            <a class="btn button-sm" href="#book">
+              Rezervă experiența
+              <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M205.66 149.66l-72 72a8 8 0 0 1-11.32 0l-72-72a8 8 0 0 1 11.32-11.32L120 196.69V40a8 8 0 0 1 16 0v156.69l58.34-58.35a8 8 0 0 1 11.32 11.32Z"/></svg>
+            </a>
+          </div>
+          <figure class="hero-art">
+            <img src="assets/gongfu-set.svg" width="1618" height="875" alt="Desen: un set de Gong Fu Cha pe tavă, cu gaiwan, carafă și două cești." fetchpriority="high">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="what wrap">
+      <!-- TODO: text final de la Demmers -->
+      <div class="reveal">
+        <h2 class="heading-3">What is Gong Fu Cha?</h2>
+        <p class="body-3">Un mod chinezesc de a prepara ceaiul cu atenție. Un ceainic mic, multe frunze și infuzii foarte scurte, de câteva secunde fiecare.</p>
+        <p class="body-3">Aceleași frunze sunt infuzate iar și iar. Fiecare ceașcă are un gust puțin diferit de cea dinainte.</p>
+      </div>
+      <ol class="pours" id="pours" aria-label="Cum decurge o sesiune">
+        <li class="pour rinse" style="--c: var(--liquor-1)">
+          <span class="cup" aria-hidden="true"><i></i></span>
+          <div>
+            <p class="step caption-4"><span class="num" aria-label="Pasul 1">01</span><span class="tag">Pregătire</span></p>
+            <h3 class="heading-6">The rinse</h3>
+            <p class="body-6 soft">Apa fierbinte trezește frunzele și apoi se aruncă. Pe aceasta nu o bea nimeni.</p>
+          </div>
+        </li>
+        <li class="pour" style="--c: var(--liquor-2)">
+          <span class="cup" aria-hidden="true"><i></i></span>
+          <div>
+            <p class="step caption-4"><span class="num" aria-label="Pasul 2">02</span></p>
+            <h3 class="heading-6">The first cup</h3>
+            <p class="body-6 soft">Câteva secunde în apă. Deschisă la culoare, proaspătă și blândă.</p>
+          </div>
+        </li>
+        <li class="pour" style="--c: var(--liquor-3)">
+          <span class="cup" aria-hidden="true"><i></i></span>
+          <div>
+            <p class="step caption-4"><span class="num" aria-label="Pasul 3">03</span></p>
+            <h3 class="heading-6">The leaves open</h3>
+            <p class="body-6 soft">Acum se desfac. Culoarea devine mai intensă, iar gustul mai plin.</p>
+          </div>
+        </li>
+        <li class="pour" style="--c: var(--liquor-5)">
+          <span class="cup" aria-hidden="true"><i></i></span>
+          <div>
+            <p class="step caption-4"><span class="num" aria-label="Pasul 4">04</span></p>
+            <h3 class="heading-6">And again</h3>
+            <p class="body-6 soft">Ceașcă după ceașcă, până când frunzele nu mai au nimic de spus.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="tagline wrap" aria-label="Motto">
+      <p class="heading-3" id="tagline">The same leaves, again and again.<br>Every cup a little different.</p>
+    </section>
+
+    <div class="wrap reveal">
+      <!-- TODO: pozele reale in site/assets/ (jpg/webp, max ~300 KB), cu alt text -->
+      <div class="photos">
+        <div class="photo caption-2 soft">Urmează poza: setul de ceai</div>
+        <div class="photo caption-2 soft">Urmează poza: turnarea</div>
+        <div class="photo caption-2 soft">Urmează poza: ceștile</div>
+      </div>
+    </div>
+
+    <section class="book wrap" id="book">
+      <div class="book-head">
+        <h2 class="heading-3">Book your experience</h2>
+        <p class="body-3 soft">Alege o zi și o oră.<br>O rezervare înseamnă o masă.</p>
+        <p class="facts caption-2">
+          <span>3 mese</span><span>1 sau 2 persoane la masă</span><span>Rezervare cu cel puțin o oră înainte</span>
+        </p>
+      </div>
+      <div id="cal-box">
+        <div id="cal-inline"></div>
+        <div class="skeleton" id="cal-skeleton" aria-hidden="true">
+          <div class="sk" style="height: 24px; width: 50%"></div>
+          <div class="sk-days">
+            <div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div>
+            <div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div>
+            <div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div>
+            <div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div>
+          </div>
+          <div class="sk" style="height: 48px"></div>
+          <div class="sk" style="height: 48px"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap reveal" aria-labelledby="faq-title" style="padding-top: 0">
+      <h2 class="heading-3" id="faq-title">Good to know</h2>
+      <div class="faq">
+        <details>
+          <summary class="title-3">Câte persoane pot sta la o masă?<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></summary>
+          <div class="faq-a"><p class="body-6 soft">Una sau două. O rezervare ține o masă, așa că rezervi o singură dată pentru amândoi.</p></div>
+        </details>
+        <details>
+          <summary class="title-3">Trebuie să știu ceva despre ceai?<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></summary>
+          <div class="faq-a"><p class="body-6 soft">Nu. Îți arătăm totul la masă, pas cu pas.</p></div>
+        </details>
+        <details>
+          <summary class="title-3">Cât de târziu pot rezerva?<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></summary>
+          <div class="faq-a"><p class="body-6 soft">Cu cel puțin o oră înainte de începutul sesiunii.</p></div>
+        </details>
+        <details>
+          <summary class="title-3">Pot anula sau schimba rezervarea?<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></summary>
+          <div class="faq-a"><p class="body-6 soft">Da. Folosește linkurile din emailul de confirmare, ca masa să poată ajunge la altcineva.</p></div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <a class="book-bar btn button-sm" id="book-bar" href="#book" aria-hidden="true" tabindex="-1">Rezervă o masă</a>
+
+  <footer id="footer">
+    <div class="wrap">
+      <div class="ftop">
+        <div>
+          <div class="fhead">
+            <h2 class="heading-3">Until the next cup.</h2>
+          </div>
+          <p class="invite body-3 soft">Te așteptăm la o masă de ceai, în centrul Clujului.</p>
+        </div>
+        <a class="btn button-sm" href="#book">Rezervă experiența</a>
+      </div>
+      <dl class="finfo">
+        <div class="where">
+          <dt class="caption-2 soft">Unde</dt>
+          <dd class="title-3"><span>Demmers Teehaus, <span style="white-space: nowrap">Piața Unirii 9,</span> <span style="white-space: nowrap">Cluj-Napoca</span></span>
+            <a href="https://www.google.com/maps/search/?api=1&query=Demmers+Teehaus+Piata+Unirii+9+Cluj-Napoca" target="_blank" rel="noopener">Cum ajungi</a></dd>
+        </div>
+        <div>
+          <dt class="caption-2 soft">Contact</dt>
+          <!-- DE CONFIRMAT cu Demmers: numar gasit public (Instagram, AllRestaurants) -->
+          <dd class="title-3"><a href="tel:+40731307897">0731 307 897</a></dd>
+        </div>
+        <div>
+          <dt class="caption-2 soft">Social</dt>
+          <!-- Instagram: dat de Zavo. Facebook: gasit public, DE CONFIRMAT -->
+          <dd class="social"><a href="https://www.instagram.com/demmerscluj/" target="_blank" rel="noopener" aria-label="Demmers Cluj pe Instagram"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128 80a48 48 0 1 0 48 48 48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32 32 32 0 0 1-32 32Zm48-136H80a56.06 56.06 0 0 0-56 56v96a56.06 56.06 0 0 0 56 56h96a56.06 56.06 0 0 0 56-56V80a56.06 56.06 0 0 0-56-56Zm40 152a40 40 0 0 1-40 40H80a40 40 0 0 1-40-40V80a40 40 0 0 1 40-40h96a40 40 0 0 1 40 40ZM192 76a12 12 0 1 1-12-12 12 12 0 0 1 12 12Z"/></svg></a><a href="https://www.facebook.com/DemmersTeehausClujNapoca" target="_blank" rel="noopener" aria-label="Demmers Teehaus pe Facebook"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24Zm8 191.63V152h24a8 8 0 0 0 0-16h-24v-24a16 16 0 0 1 16-16h16a8 8 0 0 0 0-16h-16a32 32 0 0 0-32 32v24H96a8 8 0 0 0 0 16h24v63.63a88 88 0 1 1 16 0Z"/></svg></a></dd>
+        </div>
+      </dl>
+      <div class="fbottom caption-2 soft">
+        <span class="fcups" aria-hidden="true">
+          <span class="fcup" style="--c: var(--liquor-1)"><i></i></span>
+          <span class="fcup" style="--c: var(--liquor-2)"><i></i></span>
+          <span class="fcup" style="--c: var(--liquor-3)"><i></i></span>
+          <span class="fcup" style="--c: var(--liquor-4)"><i></i></span>
+          <span class="fcup" style="--c: var(--liquor-5)"><i></i></span>
+        </span>
+        <span class="copy">© 2026 Demmers Teehaus</span>
+        <a href="#main">Înapoi sus</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.body.classList.remove("no-js");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Water: a small dye advection and diffusion field. Touch adds liquor, the field swirls and settles.
+    (function () {
+      const canvas = document.getElementById("water");
+      const ctx = canvas.getContext("2d");
+      const hero = canvas.parentElement;
+      const N = 56; // columns
+      let W, H, size, u, v, u0, v0, d, d0, img, off, octx;
+      const ramp = [[241,245,241],[234,236,196],[222,224,164],[206,210,134],[190,197,112],[176,186,98]];
+
+      function setup() {
+        const r = hero.getBoundingClientRect();
+        W = N; H = Math.max(40, Math.round(N * r.height / Math.max(r.width, 1)));
+        size = (W + 2) * (H + 2);
+        u = new Float32Array(size); v = new Float32Array(size); u0 = new Float32Array(size); v0 = new Float32Array(size);
+        d = new Float32Array(size); d0 = new Float32Array(size);
+        off = document.createElement("canvas"); off.width = W; off.height = H; octx = off.getContext("2d");
+        img = octx.createImageData(W, H);
+        canvas.width = W * 4; canvas.height = H * 4;
+      }
+      const IX = (i, j) => i + (W + 2) * j;
+      function bnd(b, x) {
+        for (let i = 1; i <= W; i++) { x[IX(i,0)] = b === 2 ? -x[IX(i,1)] : x[IX(i,1)]; x[IX(i,H+1)] = b === 2 ? -x[IX(i,H)] : x[IX(i,H)]; }
+        for (let j = 1; j <= H; j++) { x[IX(0,j)] = b === 1 ? -x[IX(1,j)] : x[IX(1,j)]; x[IX(W+1,j)] = b === 1 ? -x[IX(W,j)] : x[IX(W,j)]; }
+      }
+      function diffuse(b, x, x0, k) {
+        const a = k;
+        for (let n = 0; n < 4; n++) {
+          for (let j = 1; j <= H; j++) for (let i = 1; i <= W; i++)
+            x[IX(i,j)] = (x0[IX(i,j)] + a * (x[IX(i-1,j)] + x[IX(i+1,j)] + x[IX(i,j-1)] + x[IX(i,j+1)])) / (1 + 4 * a);
+          bnd(b, x);
+        }
+      }
+      function advect(b, dd, d0_, uu, vv, dt) {
+        for (let j = 1; j <= H; j++) for (let i = 1; i <= W; i++) {
+          let x = i - dt * uu[IX(i,j)], y = j - dt * vv[IX(i,j)];
+          x = Math.min(Math.max(x, 0.5), W + 0.5); y = Math.min(Math.max(y, 0.5), H + 0.5);
+          const i0 = x | 0, j0 = y | 0, s1 = x - i0, t1 = y - j0, s0 = 1 - s1, t0 = 1 - t1;
+          dd[IX(i,j)] = s0 * (t0 * d0_[IX(i0,j0)] + t1 * d0_[IX(i0,j0+1)]) + s1 * (t0 * d0_[IX(i0+1,j0)] + t1 * d0_[IX(i0+1,j0+1)]);
+        }
+        bnd(b, dd);
+      }
+      function project() {
+        for (let j = 1; j <= H; j++) for (let i = 1; i <= W; i++) {
+          v0[IX(i,j)] = -0.5 * (u[IX(i+1,j)] - u[IX(i-1,j)] + v[IX(i,j+1)] - v[IX(i,j-1)]); u0[IX(i,j)] = 0;
+        }
+        bnd(0, v0); bnd(0, u0);
+        for (let n = 0; n < 10; n++) {
+          for (let j = 1; j <= H; j++) for (let i = 1; i <= W; i++)
+            u0[IX(i,j)] = (v0[IX(i,j)] + u0[IX(i-1,j)] + u0[IX(i+1,j)] + u0[IX(i,j-1)] + u0[IX(i,j+1)]) / 4;
+          bnd(0, u0);
+        }
+        for (let j = 1; j <= H; j++) for (let i = 1; i <= W; i++) {
+          u[IX(i,j)] -= 0.5 * (u0[IX(i+1,j)] - u0[IX(i-1,j)]); v[IX(i,j)] -= 0.5 * (u0[IX(i,j+1)] - u0[IX(i,j-1)]);
+        }
+        bnd(1, u); bnd(2, v);
+      }
+      function step() {
+        [u0, u] = [u, u0]; [v0, v] = [v, v0];
+        advect(1, u, u0, u0, v0, 0.6); advect(2, v, v0, u0, v0, 0.6);
+        project();
+        [d0, d] = [d, d0]; diffuse(0, d, d0, 0.02);
+        [d0, d] = [d, d0]; advect(0, d, d0, u, v, 0.6);
+        for (let k = 0; k < size; k++) { d[k] *= 0.9985; u[k] *= 0.985; v[k] *= 0.985; }
+      }
+      function draw() {
+        const px = img.data;
+        for (let j = 0; j < H; j++) for (let i = 0; i < W; i++) {
+          const t = Math.min(d[IX(i+1,j+1)] * 1.5, 1) * (ramp.length - 1);
+          const a = t | 0, b = Math.min(a + 1, ramp.length - 1), f = t - a, o = (i + j * W) * 4;
+          px[o] = ramp[a][0] + (ramp[b][0] - ramp[a][0]) * f;
+          px[o+1] = ramp[a][1] + (ramp[b][1] - ramp[a][1]) * f;
+          px[o+2] = ramp[a][2] + (ramp[b][2] - ramp[a][2]) * f;
+          px[o+3] = 255;
+        }
+        octx.putImageData(img, 0, 0);
+        ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high";
+        ctx.drawImage(off, 0, 0, canvas.width, canvas.height);
+      }
+      function drop(cx, cy, amount, dx, dy, r) {
+        const ci = Math.round(cx * W) + 1, cj = Math.round(cy * H) + 1;
+        for (let j = -r; j <= r; j++) for (let i = -r; i <= r; i++) {
+          const x = ci + i, y = cj + j; if (x < 1 || y < 1 || x > W || y > H) continue;
+          const fall = Math.exp(-(i * i + j * j) / (r * r * 0.5));
+          d[IX(x,y)] = Math.min(d[IX(x,y)] + amount * fall, 1.2);
+          u[IX(x,y)] += dx * fall; v[IX(x,y)] += dy * fall;
+        }
+      }
+
+      setup();
+      // The leaves settle low in the cup and colour starts to rise.
+      drop(0.62, 0.7, 1.1, -0.4, -2.2, 7);
+      drop(0.42, 0.76, 0.8, 1.2, -1.4, 5);
+      drop(0.74, 0.82, 0.6, -1, -1, 4);
+      if (reduced) {
+        for (let n = 0; n < 120; n++) step();
+        draw();
+        return;
+      }
+
+      let last = null, running = true, visible = true, idle = 0;
+      const pos = (e) => { const r = canvas.getBoundingClientRect(); return [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height]; };
+      hero.addEventListener("pointermove", (e) => {
+        const [x, y] = pos(e);
+        if (last) drop(x, y, 0.3, (x - last[0]) * W * 3, (y - last[1]) * H * 3, 3);
+        last = [x, y]; idle = 0;
+      }, { passive: true });
+      hero.addEventListener("pointerdown", (e) => { const [x, y] = pos(e); drop(x, y, 0.55, 0, 0, 4); last = [x, y]; idle = 0; }, { passive: true });
+      hero.addEventListener("pointerleave", () => { last = null; });
+      hero.addEventListener("pointerup", () => { last = null; });
+
+      new IntersectionObserver((es) => { visible = es[0].isIntersecting; if (visible && !running) { running = true; requestAnimationFrame(loop); } }).observe(hero);
+      document.addEventListener("visibilitychange", () => { if (!document.hidden && !running && visible) { running = true; requestAnimationFrame(loop); } });
+
+      function loop() {
+        if (!visible || document.hidden) { running = false; return; }
+        idle++;
+        // When nobody touches the water, a slow current keeps the leaves breathing.
+        if (idle > 240 && idle % 200 === 0) drop(0.3 + Math.random() * 0.5, 0.55 + Math.random() * 0.3, 0.35, (Math.random() - 0.5) * 2, -0.8, 4);
+        step(); draw();
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+      let rs; window.addEventListener("resize", () => { clearTimeout(rs); rs = setTimeout(() => { setup(); drop(0.55, 0.68, 0.8, 0, -1, 5); }, 200); });
+    })();
+
+    // Smooth scrolling (Lenis) pe desktop. Pe telefon ramane scroll-ul nativ, care e deja fluid.
+    window.addEventListener("load", () => {
+      if (reduced || typeof Lenis === "undefined") return;
+      const lenis = new Lenis({ duration: 1.1, easing: (x) => 1 - Math.pow(1 - x, 4), smoothWheel: true });
+      const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
+      requestAnimationFrame(raf);
+      lenis.scrollTo(0, { immediate: true });
+      document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => {
+        const target = document.querySelector(a.getAttribute("href"));
+        if (!target) return;
+        e.preventDefault();
+        lenis.scrollTo(target, { offset: 0, duration: 1.4 });
+      }));
+    });
+
+    // FAQ ca accordion cu animatie lina: se deschide una, se inchide cealalta.
+    (function () {
+      const items = [...document.querySelectorAll(".faq details")];
+      const opts = { duration: 450, easing: "cubic-bezier(0.22, 1, 0.36, 1)" };
+      const openItem = (d) => {
+        d.open = true; d.classList.add("is-open");
+        if (reduced) return;
+        const a = d.querySelector(".faq-a"), h = a.scrollHeight;
+        a.animate([{ height: "0px", opacity: 0 }, { height: h + "px", opacity: 1 }], opts);
+      };
+      const closeItem = (d) => {
+        d.classList.remove("is-open");
+        if (reduced) { d.open = false; return; }
+        const a = d.querySelector(".faq-a"), h = a.offsetHeight;
+        const anim = a.animate([{ height: h + "px", opacity: 1 }, { height: "0px", opacity: 0 }], opts);
+        const done = () => { if (!d.classList.contains("is-open")) d.open = false; };
+        anim.onfinish = done;
+        setTimeout(done, opts.duration + 50); // plasa de siguranta daca animatia nu ruleaza (tab in fundal)
+      };
+      items.forEach((d) => d.querySelector("summary").addEventListener("click", (e) => {
+        e.preventDefault();
+        if (d.classList.contains("is-open")) { closeItem(d); return; }
+        items.forEach((o) => { if (o !== d && o.classList.contains("is-open")) closeItem(o); });
+        openItem(d);
+      }));
+    })();
+
+    // Reveals, once per element
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -15% 0px" });
+    document.querySelectorAll(".reveal, #footer").forEach((el) => io.observe(el));
+
+    // Steps: each cup comes forward as it crosses 65% of the viewport; the thread follows
+    (function () {
+      const list = document.getElementById("pours");
+      const items = [...list.querySelectorAll(".pour")];
+      const set = (k) => {
+        items.forEach((it, i) => it.classList.toggle("on", i < k));
+        list.style.setProperty("--p", k <= 1 ? 0 : (k - 1) / (items.length - 1));
+      };
+      if (reduced) { set(items.length); return; }
+      let ticking = false;
+      const update = () => {
+        const line = window.innerHeight * 0.65;
+        set(items.filter((it) => it.querySelector(".cup").getBoundingClientRect().top < line).length);
+        ticking = false;
+      };
+      window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      update();
+    })();
+
+    // Mobile: a small booking pill once the hero button is gone, hidden again near the calendar and footer
+    (function () {
+      const bar = document.getElementById("book-bar");
+      const heroBtn = document.querySelector(".hero-copy .btn");
+      const state = { hero: true, book: false, foot: false };
+      const apply = () => {
+        const on = !state.hero && !state.book && !state.foot;
+        bar.classList.toggle("show", on);
+        bar.setAttribute("aria-hidden", on ? "false" : "true");
+        bar.tabIndex = on ? 0 : -1;
+      };
+      const watch = (el, key) => new IntersectionObserver((es) => { state[key] = es[0].isIntersecting; apply(); }).observe(el);
+      watch(heroBtn, "hero"); watch(document.getElementById("book"), "book"); watch(document.getElementById("footer"), "foot");
+    })();
+
+    // Tagline: each word lights up as it crosses 70% of the viewport
+    (function () {
+      const p = document.getElementById("tagline");
+      p.innerHTML = p.innerHTML.split(/(<br>)/).map((part) =>
+        part === "<br>" ? part : part.split(" ").filter(Boolean).map((w) => '<span class="w">' + w + "</span>").join(" ")
+      ).join("");
+      const words = [...p.querySelectorAll(".w")];
+      if (reduced) { words.forEach((w) => w.classList.add("on")); return; }
+      let ticking = false;
+      const update = () => {
+        const line = window.innerHeight * 0.7;
+        words.forEach((w) => w.classList.toggle("on", w.getBoundingClientRect().top < line));
+        ticking = false;
+      };
+      window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      update();
+    })();
+
+    // Link-ul evenimentului Cal.com, format "username/event-slug". Tine-l sincron cu config.json.
+    // TEST: contul lui Zavo. Inlocuieste cu contul Demmers inainte de lansare.
+    const CAL_LINK = "andrei-zavorodnic-hxjhc9/gong-fu-cha";
+
+    const box = document.getElementById("cal-inline");
+    const skeleton = document.getElementById("cal-skeleton");
+    let calReady = false;
+    const showMessage = (html) => { skeleton.remove(); box.classList.add("done"); box.innerHTML = html; };
+
+    if (!CAL_LINK) {
+      showMessage('<div class="cal-msg body-3 soft">Rezervările se deschid în curând.</div>');
+    } else {
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "gongfucha", { origin: "https://cal.com" });
+      Cal.ns.gongfucha("inline", { elementOrSelector: "#cal-inline", calLink: CAL_LINK, config: { layout: "month_view" } });
+      Cal.ns.gongfucha("ui", { theme: "light", hideEventTypeDetails: true, layout: "month_view", cssVarsPerTheme: { light: { "cal-brand": "#9F393D" } } });
+      Cal.ns.gongfucha("on", { action: "linkReady", callback: () => { calReady = true; skeleton.classList.add("hide"); setTimeout(() => skeleton.remove(), 400); } });
+
+      // Daca embed-ul nu se incarca (retea slaba, blocat), omul are tot un drum spre rezervare.
+      setTimeout(() => {
+        if (calReady) return;
+        showMessage('<div class="cal-msg"><p class="body-3 soft">Calendarul se încarcă mai greu.</p><a class="btn button-sm" href="https://cal.com/' + CAL_LINK + '" target="_blank" rel="noopener">Deschide calendarul de rezervări</a></div>');
+      }, 15000);
+
+      // Dupa rezervare inlocuim ecranul Cal.com (cu reclama lor) cu confirmarea noastra.
+      const showConfirmation = () => {
+        // TODO: text final de la Demmers
+        showMessage('<div class="booked"><h3 class="heading-3">See you soon.</h3><p class="body-3 soft">Masa ta e rezervată. Ți-am trimis detaliile pe email.</p></div>');
+        box.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+      };
+      Cal.ns.gongfucha("on", { action: "bookingSuccessfulV2", callback: showConfirmation });
+      Cal.ns.gongfucha("on", { action: "bookingSuccessful", callback: showConfirmation });
+    }
+  </script>
+</body>
+</html>

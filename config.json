@@ -1,0 +1,17 @@
+{
+  "domain": "demmerscluj.ro",
+  "qrPath": "/qr",
+  "utm": {
+    "utm_source": "sticker",
+    "utm_medium": "qr",
+    "utm_campaign": "gongfucha"
+  },
+  "calLink": "",
+  "qr": {
+    "errorCorrection": "H",
+    "margin": 4,
+    "darkColor": "#9F393D",
+    "lightColor": "#FFFFFF",
+    "pngWidth": 1200
+  }
+}

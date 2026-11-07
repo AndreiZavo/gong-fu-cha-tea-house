@@ -1,0 +1,4 @@
+# Redirectul QR-ului. QR-ul printat duce mereu la /qr.
+# Ca sa schimbi unde ajunge omul, modifica DOAR destinatia de mai jos si redeploy.
+# 302 = temporar, ca browserele sa nu il tina in cache.
+/qr  /?utm_source=sticker&utm_medium=qr&utm_campaign=gongfucha  302

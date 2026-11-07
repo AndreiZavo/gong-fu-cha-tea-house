@@ -1,0 +1,13 @@
+{
+  "name": "demmers-gongfucha",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "qr": "node scripts/generate-qr.mjs",
+    "dev": "npx --yes serve site -l 8080",
+    "deploy": "npx --yes wrangler pages deploy site --project-name demmers-gongfucha"
+  },
+  "dependencies": {
+    "qrcode": "1.5.4"
+  }
+}

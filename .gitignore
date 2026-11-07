@@ -1,0 +1,14 @@
+node_modules/
+.wrangler/
+.DS_Store
+
+# Private working notes (client, pricing, internal process). Kept locally, never published.
+CLAUDE.md
+PRODUCT.md
+docs/
+.claude/
+.impeccable/
+skills-lock.json
+
+# Licensed font files: not redistributed
+site/assets/fonts/
