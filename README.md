@@ -1,4 +1,4 @@
-# Gong Fu Cha at Demmers Teehaus
+# Gong Fu Cha at Tea House
 
 A dynamic QR code and a one-page booking site for a Gong Fu Cha tea session at Demmers Teehaus, a tea house in Piața Unirii, Cluj-Napoca.
 
