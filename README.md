@@ -21,6 +21,41 @@ QR stickers are spread around the city and inside the tea house. A passerby scan
 - **The session as a sequence.** The steps of a session (rinse, first cup, the leaves open, again) sit on a thin thread. Each cup fills and comes forward as it reaches the reading line, and the rinse is marked as preparation because nobody drinks it. Everything stays readable without scrolling effects.
 - **Mobile first.** 100% of the traffic comes from QR scans, so the phone layout is the real one. A small booking pill appears once the hero button scrolls away and hides near the calendar. Buttons never wrap; on very narrow screens they shrink instead.
 
+## How I built it with AI
+
+I built this project end to end with [Claude Code](https://claude.com/claude-code), Anthropic's coding agent, working as the person who directs, decides and reviews. The interesting part is not that an AI wrote code. It is how I set the agent up so that the output stayed on brief, stayed safe for a real client, and was checked before I accepted it.
+
+### Context as a first-class input
+
+- **A project memory file.** Before any code, I wrote a `CLAUDE.md` with the decisions that must never drift: the chosen package and price, hosting, booking provider, who owns which account, the 1 hour booking notice, the 3 tables, and hard rules such as "nothing goes on my personal accounts" and "the QR is not printed until it is tested on paper on two phones". The agent reads it at the start of every session. It is kept out of this repo because it contains client details.
+- **A running context log.** A separate file records the client conversation, what was promised and what is still unknown. When the agent did not know something (the tea, the price, the session length), it marked it as a placeholder instead of inventing it.
+- **Source material as a suggestion, not a spec.** The client sent a tone of voice document written for a different market. I had the agent summarise it and explicitly treat it as guidance, keeping out facts that belonged to another shop.
+
+### Skills and design guardrails
+
+- **Design skills.** I used two skills (reusable instruction packs for the agent): one for landing page structure and conversion copy, with a strict visual system (type scale, spacing tokens, motion curves, no gradients behind text), and one for design direction that makes the agent propose distinct visual worlds before building. I picked one of three directions, "steeping water", and the agent wrote a direction contract that every later change was checked against.
+- **An automated design detector.** A hook ran after UI edits and flagged generic patterns (gradient text, a cream "default" palette, glow effects). The agent had to fix them, not argue with them.
+
+### Verification loop
+
+The agent did not stop at "the code looks right". After each change it opened the page in a real browser and checked it at 320, 375, 768, 1024 and 1440 px: horizontal overflow, whether buttons wrap, whether the font actually loaded, whether the steps light up in order while scrolling. A few things this caught:
+
+- An accordion animation that "never finished", which turned out to be the browser pausing animations in a hidden tab. The fix was a timer fallback, not a rewrite.
+- A headline font that rendered "ț" as a black fallback glyph. The agent remapped the glyph while subsetting the font, and when that still was not good enough, I decided the headlines stay in English.
+- Two social icons stacked on top of each other because a more specific CSS rule was overriding the layout.
+
+### Tooling the agent used
+
+Beyond writing HTML, CSS and JavaScript, the agent drove real tools: `fontTools` to subset and remap the web font, `potrace` to vectorise the hand drawn illustration from its alpha channel into a 39 KB SVG, Playwright to take the screenshots above, and the GitHub CLI to publish this repository.
+
+### Shipping safely
+
+Publishing a client project publicly needs care. Before this repo went live, the agent separated private notes (pricing, client conversation, internal process, licensed font files) from the public code, moved them behind `.gitignore`, started a clean history so the old commits with those notes were never pushed, and scanned the staged files for prices, payment terms and credentials before the first push. Anything outward facing, such as creating the public repo or force pushing, waited for my explicit go-ahead.
+
+### What stayed with me
+
+Every product and design decision: the visual direction, the fonts (tried two alternatives and went back to the original), the copy rules (Romanian text, English headlines), what the client gets to edit, and when something is good enough to ship. The agent was fast at exploring and building; my job was to keep it pointed at the right problem and to say no.
+
 ## Stack
 
 Plain HTML, CSS and JavaScript, no framework and no build step. Hosted on Cloudflare Pages.
